@@ -1,3 +1,19 @@
+/* begin additions from fieldbook-generator */
+
+body {
+    margin-left:2em;
+    margin-top:4ex;
+    margin-right:2em;
+    margin-bottom:2ex;
+    font-family:sans-serif;
+}
+
+ul {
+    list-style-type:none;
+}
+
+/* end additions */
+
 * { margin: 0; padding: 0; box-sizing: border-box;}
 
 pre { font-style: normal}
@@ -17,7 +33,7 @@ a {
 .main-box {
   max-width: 1400px;
   margin: auto;
-  padding-top: 60px;
+  padding-top: 30px;
 }
 h1 {
   text-align: center;
@@ -26,7 +42,7 @@ h1 {
 
 nav {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 .nav-btn {
   display: inline-block;
@@ -82,8 +98,8 @@ nav {
   vertical-align: bottom;
 }
 .query-page-title {
-  font-size: 34px;
-  margin-bottom: 40px;
+  /* font-size: 34px; */
+  margin-bottom: 20px;
 }
 
 

@@ -1,8 +1,3 @@
-<html>
-<body>
-<form method="GET" action="../charts-from-csv/index.html">
-<input type="submit" value="Query 2"/>
-<input name="q" type="hidden" value="
 PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
@@ -47,7 +42,3 @@ SELECT (MIN(STR(?countryName)) AS ?country_) (MIN(STR(?localityName)) AS ?locali
    ?country rdfs:label ?countryName .
 } GROUP BY ?country ?locality 
 ORDER BY ?country_ ?locality_ 
-"/>
-</form>
-</body>
-</html>
