@@ -13,7 +13,7 @@ public class HomePageController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         request.setAttribute("body", "test message: x");
-        RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/home.jsp");
         rd.forward(request, response);        
     }
     
