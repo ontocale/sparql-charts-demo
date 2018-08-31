@@ -14,12 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 public class HomePageController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final String QUERIES_DIR = "/queries/";
+    protected static final String QUERIES_DIR = "/queries/";
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         request.setAttribute("query1", loadResource(QUERIES_DIR + "query1.rq"));
         request.setAttribute("query2", loadResource(QUERIES_DIR + "query2.rq"));
+        request.setAttribute("query3", loadResource(QUERIES_DIR + "query3.rq"));
+        request.setAttribute("query4", loadResource(QUERIES_DIR + "query4.rq"));
         RequestDispatcher rd = request.getRequestDispatcher("/home.jsp");
         rd.forward(request, response);        
     }

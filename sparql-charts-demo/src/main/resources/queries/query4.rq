@@ -1,0 +1,82 @@
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl:      <http://www.w3.org/2002/07/owl#>
+PREFIX swrl:     <http://www.w3.org/2003/11/swrl#>
+PREFIX swrlb:    <http://www.w3.org/2003/11/swrlb#>
+PREFIX vitro:    <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#>
+PREFIX bibo:     <http://purl.org/ontology/bibo/>
+PREFIX c4o:      <http://purl.org/spar/c4o/>
+PREFIX cito:     <http://purl.org/spar/cito/>
+PREFIX event:    <http://purl.org/NET/c4dm/event.owl#>
+PREFIX fabio:    <http://purl.org/spar/fabio/>
+PREFIX foaf:     <http://xmlns.com/foaf/0.1/>
+PREFIX geo:      <http://aims.fao.org/aos/geopolitical.owl#>
+PREFIX obo:      <http://purl.obolibrary.org/obo/>
+PREFIX ocrer:    <http://purl.org/net/OCRe/research.owl#>
+PREFIX ocresd:   <http://purl.org/net/OCRe/study_design.owl#>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX vcard:    <http://www.w3.org/2006/vcard/ns#>
+PREFIX vitro-public: <http://vitro.mannlib.cornell.edu/ns/vitro/public#>
+PREFIX vivo:     <http://vivoweb.org/ontology/core#>
+PREFIX scires:   <http://vivoweb.org/ontology/scientific-research#>
+PREFIX onfarm:   <http://agrofims.cgiar.org/tmp/onfarm/onfarm_>
+PREFIX abox:     <http://agrofims.cgiar.org/individual/>
+PREFIX gadm:     <http://gadm.geovocab.org/ontology#>
+
+SELECT ?country_ ?locality_ (STR(?avgCaYield) AS ?avgCaYieldKgHa_) (STR(?avgCpYield) AS ?avgCpYieldKgHa_)(STR(?avgCaYield-?avgCpYield) AS ?avgConsAgImprovementKgHa) WHERE {
+{
+SELECT (MIN(STR(?countryName)) AS ?country_) (MIN(STR(?localityName)) AS ?locality_) 
+#?practice (STR(AVG(?yield)) AS ?avgYield) 
+(AVG(?cpYield) AS ?avgCpYield)
+WHERE { 
+    ?cpProcess a obo:AGRO_00000015 . # agro:ConventionalTillageProcess
+    BIND("conventional practice" AS ?practice)
+    ?cpProcess obo:BFO_0000066 ?plot . # occurs in plot
+     ?measurementProcess obo:BFO_0000066 ?plot . # occurs in plot
+  ?plan obo:BFO_0000054 ?measurementProcess . #realizedIn
+  ?protocol obo:RO_000058 ?plan . # is concretized as
+  ?protocol a <http://www.cropontology.org/rdf/CO_322:0000732> . # dry weight GY - measurement
+  ?measurementProcess obo:RO_0002234 ?measurement .
+  ?measurement obo:IAO_0000221 ?quality . # is quality measurement of
+  ?quality a <http://www.cropontology.org/rdf/CO_322:0000005> . # grain yield
+  ?measurement obo:OBI_0001938 ?valueSpecification .
+  ?valueSpecification obo:IAO_0000039 <http://www.cropontology.org/rdf/CO_322:0000729> . # has unit measurement label kg/ha
+  ?valueSpecification obo:OBI_0001937 ?cpYield . # has specified value
+   ?plot obo:BFO_0000050 ?multiplot .
+   ?multiplot obo:BFO_0000050 ?locality .
+   ?locality rdfs:label ?localityName .
+   ?locality obo:BFO_0000050 ?country .
+   ?country rdfs:label ?countryName .
+} GROUP BY ?country ?locality 
+ORDER BY ?country_ ?locality_ 
+}
+
+  {
+SELECT (MIN(STR(?countryName)) AS ?country_) (MIN(STR(?localityName)) AS ?locality_) 
+#?practice (STR(AVG(?yield)) AS ?avgYield) 
+(AVG(?caYield) AS ?avgCaYield)
+WHERE { 
+ ?caProcess a obo:AGRO_00000017 . # agro:ConservationTillageProcess
+    BIND("conservation agriculture" AS ?practice)
+    ?caProcess obo:BFO_0000066 ?plot . # occurs in plot  
+     ?measurementProcess obo:BFO_0000066 ?plot . # occurs in plot
+  ?plan obo:BFO_0000054 ?measurementProcess . #realizedIn
+  ?protocol obo:RO_000058 ?plan . # is concretized as
+  ?protocol a <http://www.cropontology.org/rdf/CO_322:0000732> . # dry weight GY - measurement
+  ?measurementProcess obo:RO_0002234 ?measurement .
+  ?measurement obo:IAO_0000221 ?quality . # is quality measurement of
+  ?quality a <http://www.cropontology.org/rdf/CO_322:0000005> . # grain yield
+  ?measurement obo:OBI_0001938 ?valueSpecification .
+  ?valueSpecification obo:IAO_0000039 <http://www.cropontology.org/rdf/CO_322:0000729> . # has unit measurement label kg/ha
+  ?valueSpecification obo:OBI_0001937 ?caYield . # has specified value
+   ?plot obo:BFO_0000050 ?multiplot .
+   ?multiplot obo:BFO_0000050 ?locality .
+   ?locality rdfs:label ?localityName .
+   ?locality obo:BFO_0000050 ?country .
+   ?country rdfs:label ?countryName .
+} GROUP BY ?country ?locality 
+ORDER BY ?country_ ?locality_ 
+}
+  
+} ORDER BY DESC(?avgConsAgImprovementKgHa)
