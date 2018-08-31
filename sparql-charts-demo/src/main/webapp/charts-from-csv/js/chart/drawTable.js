@@ -133,7 +133,7 @@ const drawTable = (config) => {
     config.chart.yDomainsNameToConfig = colsWithNumbers.length > 1 ? colsWithNumbers : null
     config.chart.domainsName = { // default chart will be siple bar chart with first col from colsWithNumbers
         x: colWithoutNumbers,
-        y: colsWithNumber // BJL:default to including all columns, was: config.chart.yDomainsNameToConfig ? colsWithNumbers.slice(0, 1) : colsWithNumbers
+        y: colsWithNumbers // BJL:default to including all columns, was: config.chart.yDomainsNameToConfig ? colsWithNumbers.slice(0, 1) : colsWithNumbers
     }
 
     config.refinedData = tbodiesData;
