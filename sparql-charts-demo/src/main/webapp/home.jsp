@@ -69,5 +69,49 @@
     
     </tr></table>
     
+    <h2>Query comparing two sets of conditions</h2>
+    
+    <form action="generateQuery" method="GET">
+    
+    <table><tr>
+    
+    <td><select name="condition1a">
+      <c:forEach items="${processesAndParticipants}" var="pp">
+        <option value="${pp.value}">${pp.label}</option>
+      </c:forEach>
+    </select></td>
+    
+    <td>versus</td>
+    
+    <td><select name="condition2a">
+      <c:forEach items="${processesAndParticipants}" var="pp">
+        <option value="${pp.value}">${pp.label}</option>
+      </c:forEach>
+    </select></td>
+    
+    <td>&nbsp;</td>
+    
+    </tr><tr>
+    
+    <td><select name="condition1b">
+      <c:forEach items="${processesAndParticipants}" var="pp">
+        <option value="${pp.value}">${pp.label}</option>
+      </c:forEach>
+    </select></td>
+    
+    <td>&nbsp;</td>
+    
+    <td><select name="condition2b">
+      <c:forEach items="${processesAndParticipants}" var="pp">
+        <option value="${pp.value}">${pp.label}</option>
+      </c:forEach>
+    </select></td>
+    
+    <td><input type="submit" class="nav-btn" value="SPARQL and Chart"/></td>
+    
+    </tr></table>
+    
+    </form>
+    
   </body>
 </html>

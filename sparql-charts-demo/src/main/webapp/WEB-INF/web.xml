@@ -39,6 +39,15 @@
     <servlet-name>FileServlet</servlet-name>
     <url-pattern>/file</url-pattern>
   </servlet-mapping> 
+   
+  <servlet>
+    <servlet-name>GenerateQueryController</servlet-name>
+    <servlet-class>org.cgiar.agrofims.sparqlchartsdemo.GenerateQueryController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GenerateQueryController</servlet-name>
+    <url-pattern>/generateQuery</url-pattern>
+  </servlet-mapping> 
   
   <welcome-file-list> 
     <welcome-file>index.html</welcome-file> 
