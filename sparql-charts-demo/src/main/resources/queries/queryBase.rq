@@ -24,7 +24,7 @@ PREFIX onfarm:   <http://agrofims.cgiar.org/tmp/onfarm/onfarm_>
 PREFIX abox:     <http://agrofims.cgiar.org/individual/>
 PREFIX gadm:     <http://gadm.geovocab.org/ontology#>
 
-SELECT ?country_ ?locality_ (STR(?avg1Yield) AS ?${column1Label}YieldKgHa) (STR(?avg2Yield) AS ?${column2Label}KgHa)(STR(?avg2Yield-?avg1Yield) AS ?avgImprovementKgHa) WHERE {
+SELECT ?country_ ?locality_ (STR(?avg1Yield) AS ?${column1Label}YieldKgHa) (STR(?avg2Yield) AS ?${column2Label}KgHa)(STR(?avg1Yield-?avg2Yield) AS ?avgImprovementKgHa) WHERE {
 {
 SELECT (MIN(STR(?countryName)) AS ?country_) (MIN(STR(?localityName)) AS ?locality_) 
 (AVG(?oneYield) AS ?avg1Yield)
