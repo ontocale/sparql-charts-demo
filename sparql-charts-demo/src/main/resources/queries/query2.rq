@@ -40,5 +40,6 @@ SELECT (MIN(STR(?countryName)) AS ?country_) (MIN(STR(?localityName)) AS ?locali
    ?locality rdfs:label ?localityName .
    ?locality obo:BFO_0000050 ?country .
    ?country rdfs:label ?countryName .
+   FILTER(lang(?countryName) = "en")
 } GROUP BY ?country ?locality 
 ORDER BY ?country_ ?locality_ 
