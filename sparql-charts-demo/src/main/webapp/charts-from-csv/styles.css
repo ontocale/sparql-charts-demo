@@ -1,5 +1,10 @@
 /* begin additions from fieldbook-generator */
 
+.queryMenu {
+    max-width: 1000px;
+    margin: auto;    
+}
+
 body {
     margin-left:2em;
     margin-top:4ex;

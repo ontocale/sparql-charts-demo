@@ -11,6 +11,8 @@
   </head>
   <body>
   
+    <div class="queryMenu">
+  
     <h1>SIMLESA Maize Yields</h1>
     
     <h2>List of plots with maize yield</h2>
@@ -112,6 +114,8 @@
     </tr></table>
     
     </form>
+    
+    </div> <!-- end queryMenu -->
     
   </body>
 </html>
