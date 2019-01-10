@@ -30,7 +30,7 @@ const setYasqe = (config) => {
     persistent: null,
     sparql: {
       showQueryButton: true,
-      endpoint: "http://35.156.71.103/vivo/admin/sparqlquery",
+      endpoint: "http://52.29.119.149/vivo/admin/sparqlquery",
       callbacks: {
         success: function (data, status, xhrObj) {
             xhrObj.then( (data) => {

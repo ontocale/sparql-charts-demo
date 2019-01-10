@@ -43,7 +43,7 @@ public class HomePageController extends HttpServlet {
         String queryStr = loadResource(QUERIES_DIR + "query3.rq");
         URIBuilder builder;
         try {
-            builder = new URIBuilder("http://35.156.71.103/vivo/admin/sparqlquery");         
+            builder = new URIBuilder("http://52.29.119.149/vivo/admin/sparqlquery");         
             builder.addParameter("query", queryStr);
             builder.addParameter("resultFormat", "application/sparql-results+json");
             ResultSet rs = ResultSetFactory.load(builder.toString(), ResultsFormat.FMT_RS_JSON);             

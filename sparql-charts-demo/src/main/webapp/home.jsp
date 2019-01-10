@@ -24,7 +24,7 @@
       <input type="hidden" name="resource" value="query1.rq"/>
     </form></td>
     
-    <td><form method="GET" action="http://35.156.71.103/vivo/admin/sparqlquery">
+    <td><form method="GET" action="http://52.29.119.149/vivo/admin/sparqlquery">
       <input type="submit" class="nav-btn" value="Results"/>
       <input type="hidden" name="resultFormat" value="text/plain"/>
       <input type="hidden" name="query" value="${fn:escapeXml(query1)}"/>
@@ -52,7 +52,7 @@
       <input type="hidden" name="resource" value="query3.rq"/>
     </form></td>
     
-    <td><form method="GET" action="http://35.156.71.103/vivo/admin/sparqlquery">
+    <td><form method="GET" action="http://52.29.119.149/vivo/admin/sparqlquery">
       <input type="submit" class="nav-btn" value="Results"/>
       <input type="hidden" name="resultFormat" value="text/plain"/>
       <input type="hidden" name="query" value="${fn:escapeXml(query3)}"/>
